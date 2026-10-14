@@ -1,33 +1,752 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#05080d">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#05080d">
 <title>Asp.AM — Presets</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#05080d;--panel:#0b111a;--panel2:#101a27;--stroke:#233449;--muted:#8193a9;--text:#e6f0fa;--blue:#61adff;--blue2:#174b88}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}::selection{background:#295c91;color:#fff}.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.17'/%3E%3C/svg%3E")}.ambient{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 50% 35% at 50% -10%,#163f6d65,transparent),linear-gradient(90deg,transparent 49.9%,#15253822 50%,transparent 50.1%);z-index:0}.wrap{width:min(1020px,calc(100% - 44px));margin:auto;position:relative;z-index:2}.top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #223042;height:80px}.brand{font-size:20px;font-weight:700;letter-spacing:-1.2px}.brand span{color:var(--blue)}.top-right{display:flex;gap:20px;align-items:center}.mono{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase}.subtle{color:var(--muted)}.iconbtn{background:none;border:1px solid #30435b;color:var(--text);padding:9px 13px;border-radius:5px;transition:.2s}.iconbtn:hover{border-color:var(--blue);color:var(--blue)}.hero{padding:110px 0 85px;position:relative}.eyebrow{display:flex;gap:10px;align-items:center;color:var(--blue)}.dot{width:6px;height:6px;background:var(--blue);box-shadow:0 0 12px var(--blue);border-radius:50%}.hero h1{font-size:clamp(68px,14vw,154px);line-height:.88;letter-spacing:-.105em;margin:25px 0 24px;font-weight:700}.hero h1 em{font-style:normal;color:var(--blue)}.hero p{max-width:440px;color:#a0b0c3;line-height:1.7;font-size:15px}.hero-mark{position:absolute;right:0;top:95px;font-family:'DM Mono',monospace;font-size:11px;color:#47627e;writing-mode:vertical-rl}.line{height:1px;background:linear-gradient(90deg,#4c9bea,#253a50,transparent)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:40px 0 20px}.section-head h2{font-size:24px;letter-spacing:-.04em;margin:0}.count{color:var(--muted)}.toolbar{display:flex;gap:12px;margin-bottom:14px}.search{width:100%;border:1px solid #293b51;background:#0a121c;color:#fff;border-radius:5px;padding:17px 18px;outline:none}.search:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4084c41e}.search::placeholder{color:#60758e}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}.filter{border:1px solid #25394e;background:transparent;color:#8fa3b9;border-radius:4px;padding:9px 14px;font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase}.filter:hover,.filter.active{color:#dcecff;background:#14263b;border-color:#4378ad}.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.item{display:flex;flex-direction:column;justify-content:space-between;min-height:178px;padding:21px;border:1px solid #25364a;background:linear-gradient(140deg,#101a27,#090f18);border-radius:6px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s,background .2s}.item:before{content:'';position:absolute;top:0;left:0;width:34px;height:2px;background:#559fe6;transition:width .3s}.item:hover{transform:translateY(-3px);border-color:#4b80b7;background:linear-gradient(140deg,#132338,#0a121e)}.item:hover:before{width:100%}.item-top{display:flex;justify-content:space-between;gap:12px}.item-title{font-size:19px;font-weight:600;line-height:1.25;overflow-wrap:anywhere}.item-index{color:#5b7795}.item-bottom{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-top:30px}.item-category{color:#8198b1}.arrow{width:33px;height:33px;display:grid;place-items:center;border:1px solid #38536f;border-radius:4px;color:var(--blue);font-size:18px;transition:.2s}.item:hover .arrow{background:#24588a;color:white}.empty{grid-column:1/-1;padding:50px 0;color:var(--muted);text-align:center}.foot{border-top:1px solid #26364a;margin-top:90px;padding:28px 0 40px;display:flex;justify-content:space-between;color:#7389a1;gap:15px}.entry{position:fixed;inset:0;z-index:10;background:#05080d;display:grid;place-items:center;transition:opacity .6s,visibility .6s}.entry:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#16406b60,transparent 45%)}.entry.off{opacity:0;visibility:hidden;pointer-events:none}.entry-inner{position:relative;text-align:center;padding:20px}.entry-kicker{color:var(--blue);margin-bottom:24px}.entry h1{font-size:clamp(70px,16vw,180px);letter-spacing:-.11em;line-height:.85;margin:0 0 30px}.entry h1 span{color:var(--blue)}.entry button{margin-top:25px;background:#dceaff;color:#09111b;border:0;padding:16px 38px;font-weight:700;border-radius:4px;transition:.2s}.entry button:hover{background:var(--blue);transform:translateY(-2px)}.entry-note{margin-top:23px;color:#69819a}.player{display:flex;align-items:center;gap:12px}.player input{width:74px;accent-color:var(--blue)}@media(max-width:700px){.wrap{width:min(100% - 30px,1020px)}.top{height:65px}.hero{padding:95px 0 65px}.hero-mark{display:none}.list{grid-template-columns:1fr}.item{min-height:160px}.foot{margin-top:60px}.player input{width:55px}.top-right{gap:9px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
+:root {
+  --bg: #05080d;
+  --panel: #0b111a;
+  --stroke: #233449;
+  --muted: #8193a9;
+  --text: #e6f0fa;
+  --blue: #61adff;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 50% 35% at 50% -10%,
+      #163f6d65,
+      transparent
+    );
+}
+
+.wrap {
+  width: min(1020px, calc(100% - 44px));
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.subtle { color: var(--muted); }
+
+/* NAVIGATION */
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #223042;
+  height: 80px;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -1.2px;
+}
+
+.brand span { color: var(--blue); }
+
+.top-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.iconbtn {
+  background: none;
+  border: 1px solid #30435b;
+  color: var(--text);
+  padding: 9px 13px;
+  border-radius: 5px;
+}
+
+.iconbtn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* HERO */
+
+.hero {
+  padding: 110px 0 85px;
+  position: relative;
+}
+
+.eyebrow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--blue);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: var(--blue);
+  box-shadow: 0 0 12px var(--blue);
+  border-radius: 50%;
+}
+
+.hero h1 {
+  font-size: clamp(68px, 14vw, 154px);
+  line-height: .88;
+  letter-spacing: -.105em;
+  margin: 25px 0 24px;
+  font-weight: 700;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--blue);
+}
+
+.hero p {
+  max-width: 440px;
+  color: #a0b0c3;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    #4c9bea,
+    #253a50,
+    transparent
+  );
+}
+
+/* ARCHIVE */
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin: 40px 0 20px;
+}
+
+.section-head h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.count { color: var(--muted); }
+
+.search {
+  width: 100%;
+  border: 1px solid #293b51;
+  background: #0a121c;
+  color: white;
+  border-radius: 5px;
+  padding: 17px 18px;
+  outline: none;
+  margin-bottom: 14px;
+}
+
+.search:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px #4084c41e;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.filter {
+  border: 1px solid #25394e;
+  background: transparent;
+  color: #8fa3b9;
+  border-radius: 4px;
+  padding: 9px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.filter:hover,
+.filter.active {
+  color: #dcecff;
+  background: #14263b;
+  border-color: #4378ad;
+}
+
+/* PRESET CARDS */
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 178px;
+  padding: 21px;
+  border: 1px solid #25364a;
+  background: linear-gradient(140deg, #101a27, #090f18);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: .2s;
+}
+
+.item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 2px;
+  background: #559fe6;
+  transition: width .3s;
+}
+
+.item:hover {
+  transform: translateY(-3px);
+  border-color: #4b80b7;
+}
+
+.item:hover::before { width: 100%; }
+
+.item-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.item-title {
+  font-size: 19px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.item-index { color: #5b7795; }
+
+.item-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.item-category { color: #8198b1; }
+
+.arrow {
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #38536f;
+  border-radius: 4px;
+  color: var(--blue);
+  font-size: 18px;
+}
+
+.item:hover .arrow {
+  background: #24588a;
+  color: white;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 50px 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ENTRANCE */
+
+.entry {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #05080d;
+  display: grid;
+  place-items: center;
+  transition: opacity .6s, visibility .6s;
+}
+
+.entry::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 45%,
+    #16406b60,
+    transparent 45%
+  );
+}
+
+.entry.off {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.entry-inner {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+}
+
+.entry-kicker {
+  color: var(--blue);
+  margin-bottom: 24px;
+}
+
+.entry h1 {
+  font-size: clamp(70px, 16vw, 180px);
+  letter-spacing: -.11em;
+  line-height: .85;
+  margin: 0 0 30px;
+}
+
+.entry h1 span { color: var(--blue); }
+
+.entry button {
+  margin-top: 25px;
+  background: #dceaff;
+  color: #09111b;
+  border: 0;
+  padding: 16px 38px;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.entry button:hover {
+  background: var(--blue);
+}
+
+.entry-note {
+  margin-top: 23px;
+  color: #69819a;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.player input {
+  width: 74px;
+  accent-color: var(--blue);
+}
+
+.foot {
+  border-top: 1px solid #26364a;
+  margin-top: 90px;
+  padding: 28px 0 40px;
+  display: flex;
+  justify-content: space-between;
+  color: #7389a1;
+}
+
+@media (max-width: 700px) {
+  .wrap { width: calc(100% - 30px); }
+  .top { height: 65px; }
+  .hero { padding: 95px 0 65px; }
+  .list { grid-template-columns: 1fr; }
+  .item { min-height: 160px; }
+  .player input { width: 55px; }
+  .top-right { gap: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+  }
+}
 </style>
 </head>
+
 <body>
-<div class="ambient"></div><div class="noise"></div>
-<div class="entry" id="entry"><div class="entry-inner"><div class="entry-kicker mono">ASPHALTER / MOTION ARCHIVE</div><h1>asp<span>.am</span></h1><div class="mono subtle">PRESSETS / PROJECTS / RESOURCES</div><button id="enter">ENTER ARCHIVE &nbsp; ↗</button><div class="entry-note mono">SOUND ON ENTRY · OPTIONAL</div></div></div>
-<div class="wrap">
-<header class="top"><a class="brand" href="#top">asp<span>.am</span></a><div class="top-right"><span class="mono subtle" id="topCount">ARCHIVE</span><div class="player"><button class="iconbtn" id="musicToggle" aria-label="Toggle music">♪ OFF</button><input type="range" id="volume" min="0" max="1" step="0.01" value="0.35" aria-label="Music volume"></div></div></header>
-<main id="top"><section class="hero"><div class="eyebrow mono"><span class="dot"></span> INDEPENDENT MOTION ARCHIVE</div><h1>asp<em>.am</em></h1><p>Presets, text effects, and project files. Everything in one place. Find what you need and get back to editing.</p><div class="hero-mark">EST. 2026 / ASPHALTERRR</div></section><div class="line"></div><section id="archive"><div class="section-head"><h2>Archive <span style="color:#6689ad">/</span> Presets</h2><span class="mono count" id="resultCount">LOADING</span></div><div class="toolbar"><input id="search" class="search" type="search" placeholder="Search presets, text effects, categories..." aria-label="Search presets"></div><div class="filters" id="filters"></div><div class="list" id="list"><div class="empty">Loading archive...</div></div></section></main>
-<footer class="foot mono"><span>© 2026 ASP.AM</span><span>MADE FOR EDITORS.</span></footer>
+
+<div class="ambient"></div>
+
+<!-- ENTRANCE SCREEN -->
+
+<div class="entry" id="entry">
+  <div class="entry-inner">
+
+    <div class="entry-kicker mono">
+      ASPHALTER / MOTION ARCHIVE
+    </div>
+
+    <h1>asp<span>.am</span></h1>
+
+    <div class="mono subtle">
+      PRESETS / PROJECTS / RESOURCES
+    </div>
+
+    <button id="enter">
+      ENTER ARCHIVE ↗
+    </button>
+
+    <div class="entry-note mono">
+      SOUND ON ENTRY · OPTIONAL
+    </div>
+
+  </div>
 </div>
-<audio id="audio" src="music.mp3" loop preload="none"></audio>
+
+<!-- MAIN WEBSITE -->
+
+<div class="wrap">
+
+<header class="top">
+
+  <a class="brand" href="#top">
+    asp<span>.am</span>
+  </a>
+
+  <div class="top-right">
+
+    <span class="mono subtle" id="topCount">
+      ARCHIVE
+    </span>
+
+    <div class="player">
+
+      <button class="iconbtn" id="musicToggle">
+        ♪ OFF
+      </button>
+
+      <input
+        type="range"
+        id="volume"
+        min="0"
+        max="1"
+        step="0.01"
+        value="0.35"
+        aria-label="Music volume"
+      >
+
+    </div>
+
+  </div>
+
+</header>
+
+<main id="top">
+
+<section class="hero">
+
+  <div class="eyebrow mono">
+    <span class="dot"></span>
+    INDEPENDENT MOTION ARCHIVE
+  </div>
+
+  <h1>asp<em>.am</em></h1>
+
+  <p>
+    Presets, text effects, and project files.
+    Everything in one place.
+    Find what you need and get back to editing.
+  </p>
+
+</section>
+
+<div class="line"></div>
+
+<section id="archive">
+
+  <div class="section-head">
+
+    <h2>Archive / Presets</h2>
+
+    <span class="mono count" id="resultCount">
+      LOADING
+    </span>
+
+  </div>
+
+  <input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="Search presets, text effects, categories..."
+  >
+
+  <div class="filters" id="filters"></div>
+
+  <div class="list" id="list">
+    <div class="empty">Loading archive...</div>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="foot mono">
+  <span>© 2026 ASP.AM</span>
+  <span>MADE FOR EDITORS.</span>
+</footer>
+
+</div>
+
+<audio id="audio" src="music.mp3" loop></audio>
+
 <script>
-const $=id=>document.getElementById(id);let presets=[],category='all';const audio=$('audio');audio.volume=.35;
-function musicUI(){$('musicToggle').textContent=audio.paused?'♪ OFF':'♫ ON'}
-async function toggleMusic(){if(audio.paused){try{await audio.play()}catch(e){console.warn('Music unavailable',e)}}else audio.pause();musicUI()}
-$('enter').addEventListener('click',async()=>{$('entry').classList.add('off');try{await audio.play()}catch(e){console.warn('Upload music.mp3 to play music',e)}musicUI()});$('musicToggle').addEventListener('click',toggleMusic);$('volume').addEventListener('input',e=>audio.volume=Number(e.target.value));audio.addEventListener('play',musicUI);audio.addEventListener('pause',musicUI);
-function categories(){return [...new Set(presets.map(p=>String(p.category||'other').toLowerCase()))].sort()}
-function renderFilters(){const box=$('filters');box.replaceChildren();['all',...categories()].forEach(c=>{const b=document.createElement('button');b.className='filter'+(c===category?' active':'');b.textContent=c==='all'?'ALL':c;b.onclick=()=>{category=c;renderFilters();render()};box.append(b)})}
-function render(){const q=$('search').value.trim().toLowerCase();const visible=presets.filter(p=>(category==='all'||String(p.category||'other').toLowerCase()===category)&&[p.title,p.description,p.category].join(' ').toLowerCase().includes(q));$('resultCount').textContent=String(visible.length).padStart(2,'0')+' RESULTS';const box=$('list');box.replaceChildren();if(!visible.length){const e=document.createElement('div');e.className='empty';e.textContent='No matching presets.';box.append(e);return}visible.forEach((p,i)=>{const a=document.createElement('a');a.className='item';a.target='_blank';a.rel='noopener noreferrer';try{const u=new URL(p.url);if(!['https:','http:'].includes(u.protocol))throw Error();a.href=u.href}catch{a.removeAttribute('href');a.removeAttribute('target');a.style.opacity='.5'}const top=document.createElement('div');top.className='item-top';const title=document.createElement('div');title.className='item-title';title.textContent=p.title||'Untitled preset';const num=document.createElement('span');num.className='item-index mono';num.textContent=String(presets.indexOf(p)+1).padStart(3,'0');top.append(title,num);const bottom=document.createElement('div');bottom.className='item-bottom';const tag=document.createElement('span');tag.className='item-category mono';tag.textContent=(p.category||'other')+' / '+(p.description||'PRESET');const arrow=document.createElement('span');arrow.className='arrow';arrow.textContent='↗';bottom.append(tag,arrow);a.append(top,bottom);box.append(a)})}
-$('search').addEventListener('input',render);
-async function load(){try{const res=await fetch('./links.json',{cache:'no-store'});if(!res.ok)throw Error('links.json could not be loaded');const data=await res.json();if(!Array.isArray(data))throw Error('links.json must be an array');presets=data.filter(x=>x&&typeof x==='object'&&typeof x.url==='string');$('topCount').textContent=String(presets.length).padStart(2,'0')+' FILES';renderFilters();render()}catch(e){$('list').textContent='Could not load presets. Check links.json is valid JSON and contains an array.';$('resultCount').textContent='ERROR';console.error(e)}}load();
+
+/* MUSIC */
+
+const audio = document.getElementById("audio");
+const entry = document.getElementById("entry");
+const musicToggle = document.getElementById("musicToggle");
+
+audio.volume = 0.35;
+
+function updateMusic() {
+  musicToggle.textContent = audio.paused ? "♪ OFF" : "♫ ON";
+}
+
+document.getElementById("enter").onclick = async () => {
+  entry.classList.add("off");
+
+  try {
+    await audio.play();
+  } catch (error) {
+    console.log("Music unavailable");
+  }
+
+  updateMusic();
+};
+
+musicToggle.onclick = async () => {
+  if (audio.paused) {
+    try {
+      await audio.play();
+    } catch (error) {
+      console.log("Music unavailable");
+    }
+  } else {
+    audio.pause();
+  }
+
+  updateMusic();
+};
+
+document.getElementById("volume").oninput = event => {
+  audio.volume = Number(event.target.value);
+};
+
+/* PRESET SYSTEM */
+
+let presets = [];
+let category = "all";
+
+const list = document.getElementById("list");
+const filters = document.getElementById("filters");
+const search = document.getElementById("search");
+
+function renderFilters() {
+
+  filters.innerHTML = "";
+
+  const categories = [
+    "all",
+    ...new Set(
+      presets.map(p => (p.category || "other").toLowerCase())
+    )
+  ];
+
+  categories.forEach(cat => {
+
+    const button = document.createElement("button");
+
+    button.className =
+      "filter" + (cat === category ? " active" : "");
+
+    button.textContent = cat;
+
+    button.onclick = () => {
+      category = cat;
+      renderFilters();
+      render();
+    };
+
+    filters.appendChild(button);
+
+  });
+
+}
+
+function render() {
+
+  const query = search.value.toLowerCase();
+
+  const visible = presets.filter(p => {
+
+    const matchesCategory =
+      category === "all" ||
+      (p.category || "other").toLowerCase() === category;
+
+    const matchesSearch = [
+      p.title,
+      p.description,
+      p.category
+    ].join(" ").toLowerCase().includes(query);
+
+    return matchesCategory && matchesSearch;
+
+  });
+
+  document.getElementById("resultCount").textContent =
+    visible.length + " RESULTS";
+
+  list.innerHTML = "";
+
+  if (!visible.length) {
+    list.innerHTML =
+      '<div class="empty">No matching presets.</div>';
+    return;
+  }
+
+  visible.forEach((preset, index) => {
+
+    const card = document.createElement("a");
+
+    card.className = "item";
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+
+    try {
+      const url = new URL(preset.url);
+
+      if (!["https:", "http:"].includes(url.protocol)) {
+        throw new Error("Invalid link");
+      }
+
+      card.href = url.href;
+
+    } catch {
+      card.removeAttribute("href");
+      card.removeAttribute("target");
+    }
+
+    const top = document.createElement("div");
+    top.className = "item-top";
+
+    const title = document.createElement("div");
+    title.className = "item-title";
+    title.textContent = preset.title || "Untitled Preset";
+
+    const number = document.createElement("span");
+    number.className = "item-index mono";
+    number.textContent = String(index + 1).padStart(3, "0");
+
+    top.append(title, number);
+
+    const bottom = document.createElement("div");
+    bottom.className = "item-bottom";
+
+    const tag = document.createElement("span");
+    tag.className = "item-category mono";
+    tag.textContent =
+      (preset.category || "other") + " / " +
+      (preset.description || "PRESET");
+
+    const arrow = document.createElement("span");
+    arrow.className = "arrow";
+    arrow.textContent = "↗";
+
+    bottom.append(tag, arrow);
+
+    card.append(top, bottom);
+
+    list.appendChild(card);
+
+  });
+
+}
+
+/* LOAD LINKS.JSON */
+
+async function loadPresets() {
+
+  try {
+
+    const response = await fetch("./links.json", {
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("Could not load links.json");
+    }
+
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      throw new Error("links.json must be an array");
+    }
+
+    presets = data.filter(
+      item => item && typeof item.url === "string"
+    );
+
+    document.getElementById("topCount").textContent =
+      presets.length + " FILES";
+
+    renderFilters();
+    render();
+
+  } catch (error) {
+
+    list.textContent =
+      "Could not load presets. Check links.json.";
+
+    console.error(error);
+
+  }
+
+}
+
+search.addEventListener("input", render);
+
+loadPresets();
+
 </script>
-</body></html>
+
+</body>
+</html>
