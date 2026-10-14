@@ -1,400 +1,529 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#05080d">
-<title>Asp.AM — Presets</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#05080e">
 
+<title>Asp.AM — Preset Archive</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #05080d;
-  --panel: #0b111a;
-  --stroke: #233449;
-  --muted: #8193a9;
-  --text: #e6f0fa;
-  --blue: #61adff;
+  --bg: #05080e;
+  --surface: #0b121d;
+  --surface2: #101c2b;
+  --border: #22364d;
+  --blue: #66b5ff;
+  --text: #e9f3ff;
+  --muted: #8799ae;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
+  min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
+  overflow-x: hidden;
 }
 
-button, input { font: inherit; }
-button { cursor: pointer; }
-a { color: inherit; text-decoration: none; }
+button,
+input {
+  font: inherit;
+}
 
-.ambient {
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* BACKGROUND */
+
+.background {
   position: fixed;
   inset: 0;
+  z-index: -1;
   pointer-events: none;
+
   background:
     radial-gradient(
-      ellipse 50% 35% at 50% -10%,
-      #163f6d65,
-      transparent
+      ellipse at 50% 0%,
+      rgba(29, 92, 155, 0.24),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      #07101c,
+      #05080e 65%
     );
 }
 
-.wrap {
-  width: min(1020px, calc(100% - 44px));
+.background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(102, 181, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(102, 181, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 45px 45px;
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 85%
+  );
+}
+
+/* LAYOUT */
+
+.container {
+  width: min(1050px, calc(100% - 36px));
   margin: auto;
-  position: relative;
-  z-index: 2;
 }
 
 .mono {
-  font-family: 'DM Mono', monospace;
+  font-family: "DM Mono", monospace;
   font-size: 11px;
-  letter-spacing: .07em;
-  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.subtle { color: var(--muted); }
+/* ENTRANCE */
+
+#entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #102943,
+      #05080e 65%
+    );
+
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+#entrance.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.entrance-content {
+  text-align: center;
+  padding: 25px;
+}
+
+.entrance-label {
+  color: var(--blue);
+  margin-bottom: 25px;
+}
+
+.entrance-title {
+  font-size: clamp(65px, 15vw, 150px);
+  letter-spacing: -0.1em;
+  line-height: 1;
+  margin: 0;
+}
+
+.entrance-title span {
+  color: var(--blue);
+}
+
+.entrance-description {
+  color: var(--muted);
+  margin: 25px 0 35px;
+}
+
+.enter-button {
+  background: var(--text);
+  color: #05080e;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 4px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.enter-button:hover {
+  background: var(--blue);
+  transform: translateY(-2px);
+}
 
 /* NAVIGATION */
 
-.top {
+header {
+  height: 80px;
+  border-bottom: 1px solid var(--border);
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #223042;
-  height: 80px;
 }
 
 .brand {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  letter-spacing: -1.2px;
+  letter-spacing: -1px;
 }
 
-.brand span { color: var(--blue); }
+.brand span {
+  color: var(--blue);
+}
 
-.top-right {
+.header-right {
   display: flex;
-  gap: 20px;
   align-items: center;
+  gap: 15px;
 }
 
-.iconbtn {
-  background: none;
-  border: 1px solid #30435b;
+.music-button {
+  background: var(--surface);
+  border: 1px solid var(--border);
   color: var(--text);
-  padding: 9px 13px;
+
+  padding: 10px 14px;
   border-radius: 5px;
 }
 
-.iconbtn:hover {
+.music-button:hover {
   border-color: var(--blue);
-  color: var(--blue);
+}
+
+.volume {
+  width: 75px;
+  accent-color: var(--blue);
 }
 
 /* HERO */
 
 .hero {
-  padding: 110px 0 85px;
-  position: relative;
+  padding: 100px 0 80px;
 }
 
-.eyebrow {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+.hero-label {
   color: var(--blue);
 }
 
-.dot {
-  width: 6px;
-  height: 6px;
-  background: var(--blue);
-  box-shadow: 0 0 12px var(--blue);
-  border-radius: 50%;
-}
-
 .hero h1 {
-  font-size: clamp(68px, 14vw, 154px);
-  line-height: .88;
-  letter-spacing: -.105em;
-  margin: 25px 0 24px;
-  font-weight: 700;
+  font-size: clamp(75px, 15vw, 155px);
+  line-height: 0.95;
+  letter-spacing: -0.1em;
+  margin: 20px 0;
 }
 
-.hero h1 em {
-  font-style: normal;
+.hero h1 span {
   color: var(--blue);
 }
 
 .hero p {
-  max-width: 440px;
-  color: #a0b0c3;
-  line-height: 1.7;
-  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 460px;
 }
 
-.line {
+.divider {
   height: 1px;
   background: linear-gradient(
     90deg,
-    #4c9bea,
-    #253a50,
+    var(--blue),
+    var(--border),
     transparent
   );
 }
 
 /* ARCHIVE */
 
-.section-head {
+.archive {
+  padding-top: 40px;
+  padding-bottom: 90px;
+}
+
+.archive-heading {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: space-between;
-  margin: 40px 0 20px;
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
-.section-head h2 {
-  font-size: 24px;
+.archive-heading h2 {
   margin: 0;
+  font-size: 25px;
 }
 
-.count { color: var(--muted); }
+.result-count {
+  color: var(--muted);
+}
 
 .search {
   width: 100%;
-  border: 1px solid #293b51;
-  background: #0a121c;
-  color: white;
-  border-radius: 5px;
   padding: 17px 18px;
+
+  background: var(--surface);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+  border-radius: 5px;
+
   outline: none;
-  margin-bottom: 14px;
 }
 
 .search:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px #4084c41e;
 }
+
+.search::placeholder {
+  color: #70849a;
+}
+
+/* FILTERS */
 
 .filters {
   display: flex;
-  gap: 8px;
+  gap: 9px;
   flex-wrap: wrap;
-  margin-bottom: 25px;
+  margin: 20px 0 30px;
 }
 
 .filter {
-  border: 1px solid #25394e;
   background: transparent;
-  color: #8fa3b9;
+  color: var(--muted);
+
+  border: 1px solid var(--border);
   border-radius: 4px;
-  padding: 9px 14px;
-  font-family: 'DM Mono', monospace;
+
+  padding: 10px 15px;
+
+  font-family: "DM Mono", monospace;
   font-size: 11px;
   text-transform: uppercase;
+
+  transition: 0.2s;
 }
 
 .filter:hover,
 .filter.active {
-  color: #dcecff;
-  background: #14263b;
-  border-color: #4378ad;
+  background: #142b43;
+  border-color: var(--blue);
+  color: var(--blue);
 }
 
 /* PRESET CARDS */
 
-.list {
+.preset-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 15px;
 }
 
-.item {
+.preset-card {
+  position: relative;
+
+  min-height: 185px;
+  padding: 23px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 178px;
-  padding: 21px;
-  border: 1px solid #25364a;
-  background: linear-gradient(140deg, #101a27, #090f18);
+
+  background: linear-gradient(
+    145deg,
+    #101c2b,
+    #080e17
+  );
+
+  border: 1px solid var(--border);
   border-radius: 6px;
-  position: relative;
+
   overflow: hidden;
-  transition: .2s;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.item::before {
+.preset-card::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 34px;
+
+  width: 40px;
   height: 2px;
-  background: #559fe6;
-  transition: width .3s;
+
+  background: var(--blue);
+  transition: width 0.3s;
 }
 
-.item:hover {
-  transform: translateY(-3px);
-  border-color: #4b80b7;
+.preset-card:hover {
+  transform: translateY(-4px);
+  border-color: #477fae;
+  box-shadow: 0 12px 35px rgba(0, 80, 160, 0.13);
 }
 
-.item:hover::before { width: 100%; }
+.preset-card:hover::before {
+  width: 100%;
+}
 
-.item-top {
+.card-top {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 15px;
 }
 
-.item-title {
-  font-size: 19px;
+.card-title {
+  font-size: 20px;
   font-weight: 600;
   overflow-wrap: anywhere;
 }
 
-.item-index { color: #5b7795; }
+.card-number {
+  color: #6382a0;
+  white-space: nowrap;
+}
 
-.item-bottom {
+.card-description {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.card-bottom {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: end;
   gap: 15px;
   margin-top: 30px;
 }
 
-.item-category { color: #8198b1; }
-
-.arrow {
-  width: 33px;
-  height: 33px;
-  display: grid;
-  place-items: center;
-  border: 1px solid #38536f;
-  border-radius: 4px;
+.card-category {
   color: var(--blue);
-  font-size: 18px;
+  text-transform: uppercase;
 }
 
-.item:hover .arrow {
-  background: #24588a;
-  color: white;
-}
+.card-arrow {
+  width: 35px;
+  height: 35px;
 
-.empty {
-  grid-column: 1 / -1;
-  padding: 50px 0;
-  color: var(--muted);
-  text-align: center;
-}
-
-/* ENTRANCE */
-
-.entry {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  background: #05080d;
-  display: grid;
-  place-items: center;
-  transition: opacity .6s, visibility .6s;
-}
-
-.entry::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 50% 45%,
-    #16406b60,
-    transparent 45%
-  );
-}
-
-.entry.off {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.entry-inner {
-  position: relative;
-  text-align: center;
-  padding: 20px;
-}
-
-.entry-kicker {
-  color: var(--blue);
-  margin-bottom: 24px;
-}
-
-.entry h1 {
-  font-size: clamp(70px, 16vw, 180px);
-  letter-spacing: -.11em;
-  line-height: .85;
-  margin: 0 0 30px;
-}
-
-.entry h1 span { color: var(--blue); }
-
-.entry button {
-  margin-top: 25px;
-  background: #dceaff;
-  color: #09111b;
-  border: 0;
-  padding: 16px 38px;
-  font-weight: 700;
-  border-radius: 4px;
-}
-
-.entry button:hover {
-  background: var(--blue);
-}
-
-.entry-note {
-  margin-top: 23px;
-  color: #69819a;
-}
-
-.player {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+
+  border: 1px solid #365777;
+  border-radius: 4px;
+
+  color: var(--blue);
+  font-size: 20px;
 }
 
-.player input {
-  width: 74px;
-  accent-color: var(--blue);
+.preset-card:hover .card-arrow {
+  background: var(--blue);
+  color: #05080e;
 }
 
-.foot {
-  border-top: 1px solid #26364a;
-  margin-top: 90px;
-  padding: 28px 0 40px;
+.preset-card.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.empty-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+  padding: 50px 15px;
+}
+
+/* FOOTER */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0 45px;
+
   display: flex;
   justify-content: space-between;
-  color: #7389a1;
+  gap: 20px;
+
+  color: var(--muted);
 }
 
+/* MOBILE */
+
 @media (max-width: 700px) {
-  .wrap { width: calc(100% - 30px); }
-  .top { height: 65px; }
-  .hero { padding: 95px 0 65px; }
-  .list { grid-template-columns: 1fr; }
-  .item { min-height: 160px; }
-  .player input { width: 55px; }
-  .top-right { gap: 9px; }
+  header {
+    height: 70px;
+  }
+
+  .hero {
+    padding: 80px 0 65px;
+  }
+
+  .preset-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .preset-card {
+    min-height: 165px;
+  }
+
+  .header-right {
+    gap: 8px;
+  }
+
+  .volume {
+    width: 55px;
+  }
+
+  footer {
+    font-size: 10px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     transition: none !important;
+    scroll-behavior: auto !important;
   }
 }
 </style>
@@ -402,67 +531,66 @@ a { color: inherit; text-decoration: none; }
 
 <body>
 
-<div class="ambient"></div>
+<div class="background"></div>
 
-<!-- ENTRANCE SCREEN -->
+<!-- ENTRANCE -->
 
-<div class="entry" id="entry">
-  <div class="entry-inner">
+<div id="entrance">
+  <div class="entrance-content">
 
-    <div class="entry-kicker mono">
+    <div class="entrance-label mono">
       ASPHALTER / MOTION ARCHIVE
     </div>
 
-    <h1>asp<span>.am</span></h1>
+    <h1 class="entrance-title">
+      asp<span>.am</span>
+    </h1>
 
-    <div class="mono subtle">
-      PRESETS / PROJECTS / RESOURCES
-    </div>
+    <p class="entrance-description mono">
+      PRESETS / PROJECT FILES / RESOURCES
+    </p>
 
-    <button id="enter">
+    <button class="enter-button" id="enterButton">
       ENTER ARCHIVE ↗
     </button>
-
-    <div class="entry-note mono">
-      SOUND ON ENTRY · OPTIONAL
-    </div>
 
   </div>
 </div>
 
 <!-- MAIN WEBSITE -->
 
-<div class="wrap">
+<div class="container">
 
-<header class="top">
+<header>
 
-  <a class="brand" href="#top">
+  <a href="#top" class="brand">
     asp<span>.am</span>
   </a>
 
-  <div class="top-right">
+  <div class="header-right">
 
-    <span class="mono subtle" id="topCount">
+    <span class="mono" id="fileCount">
       ARCHIVE
     </span>
 
-    <div class="player">
+    <button
+      class="music-button"
+      id="musicButton"
+      type="button"
+    >
+      ♪ OFF
+    </button>
 
-      <button class="iconbtn" id="musicToggle">
-        ♪ OFF
-      </button>
-
-      <input
-        type="range"
-        id="volume"
-        min="0"
-        max="1"
-        step="0.01"
-        value="0.35"
-        aria-label="Music volume"
-      >
-
-    </div>
+    <input
+      class="volume"
+      id="volumeSlider"
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      value="0.35"
+      aria-label="Music volume"
+    >
 
   </div>
 
@@ -472,12 +600,13 @@ a { color: inherit; text-decoration: none; }
 
 <section class="hero">
 
-  <div class="eyebrow mono">
-    <span class="dot"></span>
+  <div class="hero-label mono">
     INDEPENDENT MOTION ARCHIVE
   </div>
 
-  <h1>asp<em>.am</em></h1>
+  <h1>
+    asp<span>.am</span>
+  </h1>
 
   <p>
     Presets, text effects, and project files.
@@ -487,264 +616,332 @@ a { color: inherit; text-decoration: none; }
 
 </section>
 
-<div class="line"></div>
+<div class="divider"></div>
 
-<section id="archive">
+<section class="archive">
 
-  <div class="section-head">
+  <div class="archive-heading">
 
     <h2>Archive / Presets</h2>
 
-    <span class="mono count" id="resultCount">
+    <span class="result-count mono" id="resultCount">
       LOADING
     </span>
 
   </div>
 
   <input
-    id="search"
-    class="search"
     type="search"
-    placeholder="Search presets, text effects, categories..."
+    class="search"
+    id="searchInput"
+    placeholder="Search presets..."
+    autocomplete="off"
   >
 
-  <div class="filters" id="filters"></div>
+  <div class="filters" id="filterContainer"></div>
 
-  <div class="list" id="list">
-    <div class="empty">Loading archive...</div>
+  <div class="preset-grid" id="presetContainer">
+    <div class="empty-message">
+      Loading presets...
+    </div>
   </div>
 
 </section>
 
 </main>
 
-<footer class="foot mono">
+<footer class="mono">
   <span>© 2026 ASP.AM</span>
-  <span>MADE FOR EDITORS.</span>
+  <span>MADE FOR EDITORS</span>
 </footer>
 
 </div>
 
-<audio id="audio" src="music.mp3" loop></audio>
+<audio id="backgroundMusic" src="./music.mp3" loop preload="none"></audio>
 
 <script>
+"use strict";
+
+/* ELEMENTS */
+
+const entrance = document.getElementById("entrance");
+const enterButton = document.getElementById("enterButton");
+
+const audio = document.getElementById("backgroundMusic");
+const musicButton = document.getElementById("musicButton");
+const volumeSlider = document.getElementById("volumeSlider");
+
+const searchInput = document.getElementById("searchInput");
+const filterContainer = document.getElementById("filterContainer");
+const presetContainer = document.getElementById("presetContainer");
+
+const resultCount = document.getElementById("resultCount");
+const fileCount = document.getElementById("fileCount");
+
+/* STATE */
+
+let presets = [];
+let activeCategory = "all";
 
 /* MUSIC */
 
-const audio = document.getElementById("audio");
-const entry = document.getElementById("entry");
-const musicToggle = document.getElementById("musicToggle");
-
 audio.volume = 0.35;
 
-function updateMusic() {
-  musicToggle.textContent = audio.paused ? "♪ OFF" : "♫ ON";
+function updateMusicButton() {
+  musicButton.textContent = audio.paused ? "♪ OFF" : "♫ ON";
 }
 
-document.getElementById("enter").onclick = async () => {
-  entry.classList.add("off");
-
+async function playMusic() {
   try {
     await audio.play();
   } catch (error) {
-    console.log("Music unavailable");
+    console.warn("Music could not play:", error);
   }
 
-  updateMusic();
-};
+  updateMusicButton();
+}
 
-musicToggle.onclick = async () => {
+function pauseMusic() {
+  audio.pause();
+  updateMusicButton();
+}
+
+enterButton.addEventListener("click", async function () {
+  entrance.classList.add("hidden");
+  await playMusic();
+});
+
+musicButton.addEventListener("click", async function () {
   if (audio.paused) {
-    try {
-      await audio.play();
-    } catch (error) {
-      console.log("Music unavailable");
-    }
+    await playMusic();
   } else {
-    audio.pause();
+    pauseMusic();
+  }
+});
+
+volumeSlider.addEventListener("input", function () {
+  audio.volume = Number(volumeSlider.value);
+});
+
+audio.addEventListener("play", updateMusicButton);
+audio.addEventListener("pause", updateMusicButton);
+
+/* HELPERS */
+
+function getCategory(preset) {
+  return String(preset.category || "other")
+    .trim()
+    .toLowerCase() || "other";
+}
+
+function getValidURL(value) {
+  try {
+    const url = new URL(value);
+
+    if (url.protocol === "https:" || url.protocol === "http:") {
+      return url.href;
+    }
+  } catch (error) {
+    return null;
   }
 
-  updateMusic();
-};
+  return null;
+}
 
-document.getElementById("volume").oninput = event => {
-  audio.volume = Number(event.target.value);
-};
-
-/* PRESET SYSTEM */
-
-let presets = [];
-let category = "all";
-
-const list = document.getElementById("list");
-const filters = document.getElementById("filters");
-const search = document.getElementById("search");
+/* FILTER BUTTONS */
 
 function renderFilters() {
-
-  filters.innerHTML = "";
+  filterContainer.replaceChildren();
 
   const categories = [
     "all",
-    ...new Set(
-      presets.map(p => (p.category || "other").toLowerCase())
-    )
+    ...new Set(presets.map(getCategory))
   ];
 
-  categories.forEach(cat => {
-
+  categories.forEach(function (category) {
     const button = document.createElement("button");
 
-    button.className =
-      "filter" + (cat === category ? " active" : "");
+    button.type = "button";
+    button.className = "filter";
 
-    button.textContent = cat;
+    if (category === activeCategory) {
+      button.classList.add("active");
+    }
 
-    button.onclick = () => {
-      category = cat;
+    button.textContent =
+      category === "all" ? "ALL PRESETS" : category;
+
+    button.addEventListener("click", function () {
+      activeCategory = category;
       renderFilters();
-      render();
-    };
+      renderPresets();
+    });
 
-    filters.appendChild(button);
-
+    filterContainer.appendChild(button);
   });
-
 }
 
-function render() {
+/* CREATE PRESET CARD */
 
-  const query = search.value.toLowerCase();
+function createPresetCard(preset, index) {
+  const validURL = getValidURL(preset.url);
 
-  const visible = presets.filter(p => {
+  const card = document.createElement("a");
+  card.className = "preset-card";
 
+  if (validURL) {
+    card.href = validURL;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+  } else {
+    card.classList.add("disabled");
+    card.setAttribute("aria-disabled", "true");
+    card.removeAttribute("href");
+  }
+
+  const top = document.createElement("div");
+  top.className = "card-top";
+
+  const titleWrapper = document.createElement("div");
+
+  const title = document.createElement("div");
+  title.className = "card-title";
+  title.textContent = preset.title || "Untitled Preset";
+
+  const description = document.createElement("div");
+  description.className = "card-description";
+  description.textContent =
+    preset.description || "Alight Motion Preset";
+
+  titleWrapper.appendChild(title);
+  titleWrapper.appendChild(description);
+
+  const number = document.createElement("span");
+  number.className = "card-number mono";
+  number.textContent = String(index + 1).padStart(3, "0");
+
+  top.appendChild(titleWrapper);
+  top.appendChild(number);
+
+  const bottom = document.createElement("div");
+  bottom.className = "card-bottom";
+
+  const category = document.createElement("span");
+  category.className = "card-category mono";
+  category.textContent = getCategory(preset);
+
+  const arrow = document.createElement("span");
+  arrow.className = "card-arrow";
+  arrow.textContent = validURL ? "↗" : "×";
+
+  bottom.appendChild(category);
+  bottom.appendChild(arrow);
+
+  card.appendChild(top);
+  card.appendChild(bottom);
+
+  return card;
+}
+
+/* RENDER PRESETS */
+
+function renderPresets() {
+  const query = searchInput.value.trim().toLowerCase();
+
+  const visiblePresets = presets.filter(function (preset) {
     const matchesCategory =
-      category === "all" ||
-      (p.category || "other").toLowerCase() === category;
+      activeCategory === "all" ||
+      getCategory(preset) === activeCategory;
 
-    const matchesSearch = [
-      p.title,
-      p.description,
-      p.category
-    ].join(" ").toLowerCase().includes(query);
+    const searchableText = [
+      preset.title || "",
+      preset.description || "",
+      preset.category || ""
+    ].join(" ").toLowerCase();
+
+    const matchesSearch = searchableText.includes(query);
 
     return matchesCategory && matchesSearch;
-
   });
 
-  document.getElementById("resultCount").textContent =
-    visible.length + " RESULTS";
+  resultCount.textContent =
+    visiblePresets.length + " RESULTS";
 
-  list.innerHTML = "";
+  presetContainer.replaceChildren();
 
-  if (!visible.length) {
-    list.innerHTML =
-      '<div class="empty">No matching presets.</div>';
+  if (visiblePresets.length === 0) {
+    const message = document.createElement("div");
+    message.className = "empty-message";
+    message.textContent = "No matching presets found.";
+
+    presetContainer.appendChild(message);
     return;
   }
 
-  visible.forEach((preset, index) => {
-
-    const card = document.createElement("a");
-
-    card.className = "item";
-    card.target = "_blank";
-    card.rel = "noopener noreferrer";
-
-    try {
-      const url = new URL(preset.url);
-
-      if (!["https:", "http:"].includes(url.protocol)) {
-        throw new Error("Invalid link");
-      }
-
-      card.href = url.href;
-
-    } catch {
-      card.removeAttribute("href");
-      card.removeAttribute("target");
-    }
-
-    const top = document.createElement("div");
-    top.className = "item-top";
-
-    const title = document.createElement("div");
-    title.className = "item-title";
-    title.textContent = preset.title || "Untitled Preset";
-
-    const number = document.createElement("span");
-    number.className = "item-index mono";
-    number.textContent = String(index + 1).padStart(3, "0");
-
-    top.append(title, number);
-
-    const bottom = document.createElement("div");
-    bottom.className = "item-bottom";
-
-    const tag = document.createElement("span");
-    tag.className = "item-category mono";
-    tag.textContent =
-      (preset.category || "other") + " / " +
-      (preset.description || "PRESET");
-
-    const arrow = document.createElement("span");
-    arrow.className = "arrow";
-    arrow.textContent = "↗";
-
-    bottom.append(tag, arrow);
-
-    card.append(top, bottom);
-
-    list.appendChild(card);
-
+  visiblePresets.forEach(function (preset, index) {
+    const card = createPresetCard(preset, index);
+    presetContainer.appendChild(card);
   });
-
 }
 
 /* LOAD LINKS.JSON */
 
 async function loadPresets() {
-
   try {
-
     const response = await fetch("./links.json", {
       cache: "no-store"
     });
 
     if (!response.ok) {
-      throw new Error("Could not load links.json");
+      throw new Error(
+        "Unable to load links.json. HTTP " + response.status
+      );
     }
 
     const data = await response.json();
 
     if (!Array.isArray(data)) {
-      throw new Error("links.json must be an array");
+      throw new Error("links.json must contain a JSON array.");
     }
 
-    presets = data.filter(
-      item => item && typeof item.url === "string"
-    );
+    presets = data.filter(function (item) {
+      return (
+        item !== null &&
+        typeof item === "object" &&
+        !Array.isArray(item) &&
+        typeof item.url === "string"
+      );
+    });
 
-    document.getElementById("topCount").textContent =
-      presets.length + " FILES";
+    fileCount.textContent = presets.length + " FILES";
 
     renderFilters();
-    render();
+    renderPresets();
 
   } catch (error) {
+    console.error("Preset loading error:", error);
 
-    list.textContent =
-      "Could not load presets. Check links.json.";
+    resultCount.textContent = "ERROR";
 
-    console.error(error);
+    presetContainer.replaceChildren();
 
+    const message = document.createElement("div");
+    message.className = "empty-message";
+    message.textContent =
+      "Unable to load presets. Check your links.json file.";
+
+    presetContainer.appendChild(message);
   }
-
 }
 
-search.addEventListener("input", render);
+/* SEARCH */
+
+searchInput.addEventListener("input", renderPresets);
+
+/* START */
 
 loadPresets();
+updateMusicButton();
 
 </script>
 
